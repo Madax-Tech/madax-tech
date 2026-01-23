@@ -1,8 +1,24 @@
-/* @refresh reload */
 import { render } from 'solid-js/web'
+import App from './App'
 import './index.css'
-import App from './App.tsx'
+import { Router } from '@solidjs/router'
+import Navbar from './components/templates/Navbar'
+import type { Component, ParentProps } from 'solid-js'
 
-const root = document.getElementById('root')
+const Layout: Component<ParentProps> = ({ children }) => {
+    return (
+        <>
+            <Navbar />
+            {children}
+            <footer>Footer</footer>
+        </>
+    )
+}
 
-render(() => <App />, root!)
+render(() => {
+    return (
+        <Router root={Layout}>
+            <App />
+        </Router>
+    )
+}, document.getElementById('root')!)

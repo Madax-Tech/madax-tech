@@ -1,8 +1,10 @@
 :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-    --foreground-strong: #ffffff;
-    --foreground-em: #ffffff;
+    --background1: #333;
+    --background2: #444;
+    --background3: #555;
+    --foreground1: #ededed;
+    --foreground2: #f5f5f5;
+    --foreground3: #ffffff;
     --scrollbar-track: transparent;
     --scrollbar-thumb: rgba(237, 237, 237, 0.18);
     --scrollbar-thumb-hover: rgba(237, 237, 237, 0.28);
@@ -20,14 +22,12 @@
     scroll-behavior: smooth;
     scrollbar-width: thin;
     scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
-}
-
-html {
-    overflow: hidden;
+    font-size: clamp(15px, 2.5vw, 20px);
 }
 
 html,
 body {
     width: 100dvw;
     height: 100dvh;
+    overflow: hidden;
 }

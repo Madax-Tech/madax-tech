@@ -1,9 +1,16 @@
-const HomesPage = () => {
+import { type Component } from 'solid-js'
+import { styled } from 'solid-styled-components'
+
+const Container = styled("div")`
+    text-align: center;
+`
+
+const Home: Component = () => {
     return (
-        <div>
-            <h1>Our Homes</h1>
-        </div>
+        <Container>
+            A
+        </Container>
     )
 }
 
-export default HomesPage
+export default Home
