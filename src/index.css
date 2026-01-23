@@ -1,0 +1,33 @@
+:root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+    --foreground-strong: #ffffff;
+    --foreground-em: #ffffff;
+    --scrollbar-track: transparent;
+    --scrollbar-thumb: rgba(237, 237, 237, 0.18);
+    --scrollbar-thumb-hover: rgba(237, 237, 237, 0.28);
+    --scrollbar-thumb-active: rgba(237, 237, 237, 0.38);
+}
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    -webkit-user-drag: none;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    user-select: none;
+    scroll-behavior: smooth;
+    scrollbar-width: thin;
+    scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+}
+
+html {
+    overflow: hidden;
+}
+
+html,
+body {
+    width: 100dvw;
+    height: 100dvh;
+}
