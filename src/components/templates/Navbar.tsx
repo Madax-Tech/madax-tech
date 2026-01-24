@@ -1,5 +1,6 @@
 import { FaSolidBars, FaBrandsSquareWhatsapp, FaBrandsSquareLinkedin, FaBrandsSquareInstagram } from "solid-icons/fa"
-import { createSignal, onCleanup, onMount, Show, type Component } from "solid-js"
+import { createSignal, onCleanup, onMount, Show } from "solid-js"
+import Contact from "@/components/atoms/Contact"
 import { styled } from "solid-styled-components"
 import { A } from "@solidjs/router"
 
@@ -8,7 +9,8 @@ const Desktop = styled("nav")`
     position: relative;
     width: 100%;
     height: 60px;
-    background-color: var(--background1);
+    background-color: var(--color1);
+    border-bottom: 1px solid var(--color3);
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -32,7 +34,7 @@ const DesktopBox = styled("div")`
 `
 const DesktopItem = styled(A)`
     margin-left: 20px;
-    color: var(--foreground1);
+    color: var(--color5);
     cursor: pointer;
     text-decoration: none;
 
@@ -47,7 +49,7 @@ const Mobile = styled("nav")`
     padding: 0 20px;
     width: 100%;
     height: auto;
-    background-color: var(--background1);
+    background-color: var(--color1);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -74,18 +76,18 @@ const MobileItem = styled(A)`
     width: 100%;
     text-align: center;
     padding: 10px 0;
-    color: var(--foreground1);
+    color: var(--color5);
     cursor: pointer;
     text-decoration: none;
-    border: 1px solid var(--background2);
+    border: 1px solid var(--color3);
 
     &:hover {
-        background-color: var(--background2);
+        background-color: var(--color3);
     }
 `
 const MobileHamburger = styled(FaSolidBars)`
     display: none;
-    color: var(--foreground1);
+    color: var(--color5);
     width: 28px;
     height: 28px;
     cursor: pointer;
@@ -105,40 +107,12 @@ const MobileContact = styled("div")`
 //#endregion
 
 const Logo = styled(A)`
-    color: var(--foreground1);
+    color: var(--color5);
     font-size: clamp(16px, 10vw, 30px);
     font-weight: bold;
     left: 20px;
     text-decoration: none;
 `
-
-const Icon = styled("div")`
-    transition: all 0.2s;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    &:hover {
-        transform: scale(1.1);
-        opacity: 0.8;
-    }
-`
-
-type IconsProps = {
-    size: number
-    color: string
-    component: Component<any>
-}
-
-const Contact: Component<IconsProps> = ({ size, color, component }) => {
-    const Component = component
-    return (
-        <Icon>
-            <Component style={{ width: `${size}px`, height: `${size}px`, color }} />
-        </Icon>
-    )
-}
 
 export default () => {
 
@@ -159,15 +133,15 @@ export default () => {
                         <Logo href="/">Madax Tech</Logo>
                     </DesktopBox>
                     <DesktopBox>
-                        <DesktopItem href="/">Home</DesktopItem>
-                        <DesktopItem href="/services">Services</DesktopItem>
-                        <DesktopItem href="/projects">Projects</DesktopItem>
-                        <DesktopItem href="/about">About</DesktopItem>
+                        <DesktopItem href="/">Inicio</DesktopItem>
+                        <DesktopItem href="/services">Serviços</DesktopItem>
+                        <DesktopItem href="/projects">Projetos</DesktopItem>
+                        <DesktopItem href="/about">Sobre</DesktopItem>
                     </DesktopBox>
                     <DesktopBox>
-                        <Contact size={40} color="#25D366" component={FaBrandsSquareWhatsapp} />
-                        <Contact size={40} color="#0077B5" component={FaBrandsSquareLinkedin} />
-                        <Contact size={40} color="#E1306C" component={FaBrandsSquareInstagram} />
+                        <Contact size={40} color="var(--color5)" component={FaBrandsSquareWhatsapp} />
+                        <Contact size={40} color="var(--color5)" component={FaBrandsSquareLinkedin} />
+                        <Contact size={40} color="var(--color5)" component={FaBrandsSquareInstagram} />
                     </DesktopBox>
                 </Desktop>
             </Show>
@@ -179,14 +153,14 @@ export default () => {
                     </MobileBox>
                     <Show when={open()}>
                         <MobileMenu>
-                            <MobileItem href="/">Home</MobileItem>
-                            <MobileItem href="/services">Services</MobileItem>
-                            <MobileItem href="/projects">Projects</MobileItem>
-                            <MobileItem href="/about">About</MobileItem>
+                            <MobileItem href="/">Inicio</MobileItem>
+                            <MobileItem href="/services">Serviços</MobileItem>
+                            <MobileItem href="/projects">Projetos</MobileItem>
+                            <MobileItem href="/about">Sobre</MobileItem>
                             <MobileContact>
-                                <Contact size={35} color="#25D366" component={FaBrandsSquareWhatsapp} />
-                                <Contact size={35} color="#0077B5" component={FaBrandsSquareLinkedin} />
-                                <Contact size={35} color="#E1306C" component={FaBrandsSquareInstagram} />
+                                <Contact size={35} color="var(--color5)" component={FaBrandsSquareWhatsapp} />
+                                <Contact size={35} color="var(--color5)" component={FaBrandsSquareLinkedin} />
+                                <Contact size={35} color="var(--color5)" component={FaBrandsSquareInstagram} />
                             </MobileContact>
                         </MobileMenu>
                     </Show>

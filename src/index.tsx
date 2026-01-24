@@ -7,14 +7,14 @@ import './index.css'
 
 const Navbar: Component = lazy(() => import('./components/templates/Navbar'))
 const App: Component = lazy(() => import('./App'))
-// const Footer: Component = lazy(() => import('./components/templates/Footer'))
+const Footer: Component = lazy(() => import('./components/templates/Footer'))
 
 const Layout: Component<ParentProps> = ({ children }) => {
     return (
         <>
             <Navbar />
             {children}
-            <footer>Footer</footer>
+            <Footer />
         </>
     )
 }
