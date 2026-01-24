@@ -10,7 +10,6 @@ const Desktop = styled("nav")`
     width: 100%;
     height: 60px;
     background-color: var(--color1);
-    border-bottom: 1px solid var(--color3);
     display: flex;
     align-items: center;
     justify-content: space-around;

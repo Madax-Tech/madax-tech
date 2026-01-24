@@ -7,7 +7,6 @@ const Container = styled("footer")`
     width: 100%;
     height: 100px;
     background-color: var(--color1);
-    border-top: 1px solid var(--color3);
     display: flex;
     flex-direction: column;
     align-items: center;
