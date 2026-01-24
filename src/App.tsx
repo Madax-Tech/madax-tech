@@ -1,5 +1,4 @@
 import { lazy, Suspense } from "solid-js"
-import { Route } from "@solidjs/router"
 import Loading from "./components/templates/Loading"
 
 const HomePage = lazy(() => import("./pages/Home"))
@@ -11,12 +10,11 @@ const ServicesPage = lazy(() => import("./pages/Services"))
 const App = () => {
     return (
         <Suspense fallback={<Loading />}>
-            <Route path="/" component={HomePage} />
-            <Route path="/services" component={ServicesPage} />
-            <Route path="/projects" component={ProjectsPage} />
-            <Route path="/contact" component={ContactPage} />
-            <Route path="/about" component={AboutPage} />
-            <Route path="*" component={HomePage} />
+            <section id="home"><HomePage /></section>
+            <section id="services"><ServicesPage /></section>
+            <section id="projects"><ProjectsPage /></section>
+            <section id="about"><AboutPage /></section>
+            <section id="contact"><ContactPage /></section>
         </Suspense>
     )
 }

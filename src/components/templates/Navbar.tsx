@@ -2,19 +2,21 @@ import { FaSolidBars, FaBrandsSquareWhatsapp, FaBrandsSquareLinkedin, FaBrandsSq
 import { createSignal, onCleanup, onMount, Show } from "solid-js"
 import Contact from "@/components/atoms/Contact"
 import { styled } from "solid-styled-components"
-import { A } from "@solidjs/router"
+import { Glass } from "@/styles/Glass"
+import Anchor from "../atoms/Anchor"
 
 //#region Desktop
 const Desktop = styled("nav")`
+    ${Glass};
     position: relative;
     width: 100%;
     height: 60px;
-    background-color: var(--color1);
     display: flex;
     align-items: center;
     justify-content: space-around;
     padding: 0 20px;
     gap: 10px;
+    border-bottom: 1px solid var(--color3);
 `
 const DesktopBox = styled("div")`
     width: 33.33%;
@@ -31,28 +33,24 @@ const DesktopBox = styled("div")`
         justify-content: end;
     }
 `
-const DesktopItem = styled(A)`
+const DesktopItem = styled(Anchor)`
     margin-left: 20px;
     color: var(--color5);
     cursor: pointer;
-    text-decoration: none;
-
-    &:hover {
-        text-decoration: underline;
-    }
 `
 //#endregion
 //#region Mobile
 const Mobile = styled("nav")`
+    ${Glass};
     position: relative;
     padding: 0 20px;
     width: 100%;
     height: auto;
-    background-color: var(--color1);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
+    border-bottom: 1px solid var(--color3);
 `
 const MobileBox = styled("div")`
     width: 100%;
@@ -71,7 +69,7 @@ const MobileMenu = styled("div")`
     gap: 5px;
     padding: 5px 0;
 `
-const MobileItem = styled(A)`
+const MobileItem = styled("a")`
     width: 100%;
     text-align: center;
     padding: 10px 0;
@@ -105,12 +103,12 @@ const MobileContact = styled("div")`
 `
 //#endregion
 
-const Logo = styled(A)`
+const Logo = styled(Anchor)`
     color: var(--color5);
     font-size: clamp(16px, 10vw, 30px);
     font-weight: bold;
     left: 20px;
-    text-decoration: none;
+    cursor: pointer;
 `
 
 export default () => {
@@ -124,18 +122,53 @@ export default () => {
         onCleanup(() => window.removeEventListener("resize", handleResize))
     })
 
+    const scrollToSection = (id: string) => {
+        const el = document.getElementById(id)
+        if (!el) return
+
+        const getScrollContainer = (node: Element | null): HTMLElement | Window => {
+            let cur: Element | null = node
+            while (cur && cur.parentElement) {
+                const parent = cur.parentElement
+                const style = getComputedStyle(parent)
+                const overflowY = style.overflowY
+                if ((overflowY === "auto" || overflowY === "scroll" || overflowY === "overlay") && parent.scrollHeight > parent.clientHeight) {
+                    return parent as HTMLElement
+                }
+                cur = parent
+            }
+            return window
+        }
+
+        const container = getScrollContainer(el)
+        const navEl = document.querySelector("nav")
+        const offset = (navEl as HTMLElement | null)?.clientHeight ?? 60
+
+        if (container === window) {
+            const top = el.getBoundingClientRect().top + window.pageYOffset - offset
+            window.scrollTo({ top, behavior: "smooth" })
+        } else {
+            const c = container as HTMLElement
+            const top = el.getBoundingClientRect().top - c.getBoundingClientRect().top + c.scrollTop - offset
+            c.scrollTo({ top, behavior: "smooth" })
+        }
+
+        setOpen(false)
+    }
+
     return (
         <>
             <Show when={size() > 1000} >
                 <Desktop>
                     <DesktopBox>
-                        <Logo href="/">Madax Tech</Logo>
+                        <Logo onClick={(e: MouseEvent) => { e.preventDefault(); scrollToSection("home") }}>Madax Tech</Logo>
                     </DesktopBox>
                     <DesktopBox>
-                        <DesktopItem href="/">Inicio</DesktopItem>
-                        <DesktopItem href="/services">Serviços</DesktopItem>
-                        <DesktopItem href="/projects">Projetos</DesktopItem>
-                        <DesktopItem href="/about">Sobre</DesktopItem>
+                        <DesktopItem onClick={(e: MouseEvent) => { e.preventDefault(); scrollToSection("home") }}>Inicio</DesktopItem>
+                        <DesktopItem onClick={(e: MouseEvent) => { e.preventDefault(); scrollToSection("services") }}>Serviços</DesktopItem>
+                        <DesktopItem onClick={(e: MouseEvent) => { e.preventDefault(); scrollToSection("projects") }}>Projetos</DesktopItem>
+                        <DesktopItem onClick={(e: MouseEvent) => { e.preventDefault(); scrollToSection("about") }}>Sobre</DesktopItem>
+                        <DesktopItem onClick={(e: MouseEvent) => { e.preventDefault(); scrollToSection("contact") }}>Contato</DesktopItem>
                     </DesktopBox>
                     <DesktopBox>
                         <Contact size={40} color="var(--color5)" component={FaBrandsSquareWhatsapp} />
@@ -147,15 +180,16 @@ export default () => {
             <Show when={size() <= 1000} >
                 <Mobile>
                     <MobileBox>
-                        <Logo href="/">Madax Tech</Logo>
+                        <Logo onClick={(e: MouseEvent) => { e.preventDefault(); scrollToSection("home") }}>Madax Tech</Logo>
                         <MobileHamburger onClick={() => setOpen(p => !p)} />
                     </MobileBox>
                     <Show when={open()}>
                         <MobileMenu>
-                            <MobileItem href="/">Inicio</MobileItem>
-                            <MobileItem href="/services">Serviços</MobileItem>
-                            <MobileItem href="/projects">Projetos</MobileItem>
-                            <MobileItem href="/about">Sobre</MobileItem>
+                            <MobileItem onClick={(e: MouseEvent) => { e.preventDefault(); scrollToSection("home") }}>Inicio</MobileItem>
+                            <MobileItem onClick={(e: MouseEvent) => { e.preventDefault(); scrollToSection("services") }}>Serviços</MobileItem>
+                            <MobileItem onClick={(e: MouseEvent) => { e.preventDefault(); scrollToSection("projects") }}>Projetos</MobileItem>
+                            <MobileItem onClick={(e: MouseEvent) => { e.preventDefault(); scrollToSection("about") }}>Sobre</MobileItem>
+                            <MobileItem onClick={(e: MouseEvent) => { e.preventDefault(); scrollToSection("contact") }}>Contato</MobileItem>
                             <MobileContact>
                                 <Contact size={35} color="var(--color5)" component={FaBrandsSquareWhatsapp} />
                                 <Contact size={35} color="var(--color5)" component={FaBrandsSquareLinkedin} />

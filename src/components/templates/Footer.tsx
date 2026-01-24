@@ -1,12 +1,13 @@
-import { styled } from "solid-styled-components"
 import { FaBrandsSquareWhatsapp, FaBrandsSquareLinkedin, FaBrandsSquareInstagram } from "solid-icons/fa"
+import { styled } from "solid-styled-components"
 import Contact from "@/components/atoms/Contact"
+import { Glass } from "@/styles/Glass"
 
 const Container = styled("footer")`
+    ${Glass};
     position: relative;
     width: 100%;
     height: 100px;
-    background-color: var(--color1);
     display: flex;
     flex-direction: column;
     align-items: center;
