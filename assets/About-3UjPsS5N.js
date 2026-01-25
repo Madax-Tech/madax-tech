@@ -1,4 +1,4 @@
-import{c as e,s as t,G as h,t as s}from"./index-CmC7URLT.js";const x="/assets/img1-DsDhHdnT.jpg",m="/assets/img2-C25j2Pkh.jpg";var g=s("<h3>Davi Lima"),u=s("<h3>Marcos Paulo");const f=t("section")`
+import{c as e,s as t,G as h,t as s}from"./index-Bg1uWFPb.js";const x="/madax-page/assets/img1-DsDhHdnT.jpg",m="/madax-page/assets/img2-C25j2Pkh.jpg";var g=s("<h3>Davi Lima"),u=s("<h3>Marcos Paulo");const f=t("section")`
     padding: 24px;
     max-width: 1100px;
     margin: 0 auto;
