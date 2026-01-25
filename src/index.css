@@ -6,13 +6,14 @@
 }
 
 :root {
-    --color1: #24537f;
+    --color8: #24537f;
     --color2: #108ba8;
     --color3: #166e93;
     --color4: #45d69e;
     --color5: #d9d9d9;
     --color6: #1a1a1a;
     --color7: #9a9a9a;
+    --color8: rgba(36, 83, 127, 0.3);
 }
 
 * {
@@ -32,5 +33,6 @@ body {
     width: 100dvw;
     height: 100dvh;
     overflow: hidden;
-    background: black;
+    color: var(--color5);
+    background: var(--color6);
 }
