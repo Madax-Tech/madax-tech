@@ -1,4 +1,4 @@
-import { FaSolidBars, FaBrandsSquareWhatsapp, FaBrandsSquareLinkedin, FaBrandsSquareInstagram } from "solid-icons/fa"
+import { FaSolidBars, FaSolidXmark, FaBrandsSquareWhatsapp, FaBrandsSquareLinkedin, FaBrandsSquareInstagram } from "solid-icons/fa"
 import { createSignal, onCleanup, onMount, Show, type Component } from "solid-js"
 import { styled } from "solid-styled-components"
 
@@ -78,7 +78,19 @@ const MobileMenu = styled("div")`
     justify-content: center;
     align-items: center;
     gap: 5px;
-    padding: 5px 0;
+    overflow: hidden;
+    max-height: 0;
+    padding: 0;
+    opacity: 0;
+    transform: translateY(-8px);
+    transition: max-height 320ms ease, opacity 240ms ease, transform 240ms ease, padding 240ms ease;
+
+    &.open {
+        padding: 5px 0;
+        max-height: 500px;
+        opacity: 1;
+        transform: translateY(0);
+    }
 `
 const MobileItem = styled("a")`
     width: 100%;
@@ -93,7 +105,19 @@ const MobileItem = styled("a")`
         background-color: var(--color8);
     }
 `
-const MobileHamburger = styled(FaSolidBars)`
+const MobileBars = styled(FaSolidBars)`
+    display: none;
+    color: var(--color5);
+    width: 28px;
+    height: 28px;
+    cursor: pointer;
+
+    @media (max-width: 1000px) {
+        display: block;
+        margin-left: 12px;
+    }
+`
+const MobileClose = styled(FaSolidXmark)`
     display: none;
     color: var(--color5);
     width: 28px;
@@ -113,13 +137,12 @@ const MobileContact = styled("div")`
     margin-bottom: 10px;
 `
 //#endregion
-
+//#region Common
 const IconsGroup = styled("div")`
     display: flex;
     flex-direction: row;
     gap: 5px;
 `
-
 const Logo = styled(Anchor)`
     color: var(--color5);
     font-size: clamp(16px, 10vw, 30px);
@@ -127,6 +150,7 @@ const Logo = styled(Anchor)`
     left: 20px;
     cursor: pointer;
 `
+//#endregion
 
 const getScrollContainer = (node: Element | null): HTMLElement | Window => {
     let cur: Element | null = node
@@ -198,23 +222,23 @@ const Navbar: Component = () => {
                     <MobileMargin />
                     <Mobile>
                         <MobileBox>
-                            <Logo onClick={(e: MouseEvent) => { e.preventDefault(); scrollToSection("home") }}>Madax Tech</Logo>
-                            <MobileHamburger onClick={() => setOpen(p => !p)} />
+                            <Logo onClick={(e: MouseEvent) => { e.preventDefault(); scrollToSection("home") }}>
+                                Madax Tech
+                            </Logo>
+                            {open() ? (<MobileClose onClick={() => setOpen(p => !p)} />) : (<MobileBars onClick={() => setOpen(p => !p)} />)}
                         </MobileBox>
-                        <Show when={open()}>
-                            <MobileMenu>
-                                <MobileItem onClick={(e: MouseEvent) => { e.preventDefault(); scrollToSection("home") }}>Inicio</MobileItem>
-                                <MobileItem onClick={(e: MouseEvent) => { e.preventDefault(); scrollToSection("projects") }}>Projetos</MobileItem>
-                                <MobileItem onClick={(e: MouseEvent) => { e.preventDefault(); scrollToSection("about") }}>Sobre</MobileItem>
-                                <MobileContact>
-                                    <IconsGroup>
-                                        <Contact size={35} color="var(--color5)" component={FaBrandsSquareWhatsapp} />
-                                        <Contact size={35} color="var(--color5)" component={FaBrandsSquareLinkedin} />
-                                        <Contact size={35} color="var(--color5)" component={FaBrandsSquareInstagram} />
-                                    </IconsGroup>
-                                </MobileContact>
-                            </MobileMenu>
-                        </Show>
+                        <MobileMenu class={open() ? "open" : ""} aria-hidden={!open()}>
+                            <MobileItem onClick={(e: MouseEvent) => { e.preventDefault(); scrollToSection("home") }}>Inicio</MobileItem>
+                            <MobileItem onClick={(e: MouseEvent) => { e.preventDefault(); scrollToSection("projects") }}>Projetos</MobileItem>
+                            <MobileItem onClick={(e: MouseEvent) => { e.preventDefault(); scrollToSection("about") }}>Sobre</MobileItem>
+                            <MobileContact>
+                                <IconsGroup>
+                                    <Contact size={35} color="var(--color5)" component={FaBrandsSquareWhatsapp} />
+                                    <Contact size={35} color="var(--color5)" component={FaBrandsSquareLinkedin} />
+                                    <Contact size={35} color="var(--color5)" component={FaBrandsSquareInstagram} />
+                                </IconsGroup>
+                            </MobileContact>
+                        </MobileMenu>
                     </Mobile>
                 </>
             </Show >
