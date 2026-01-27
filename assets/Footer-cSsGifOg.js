@@ -1,4 +1,4 @@
-import{C as o,F as t,a as n,b as a}from"./Contact-b-UbLh1Y.js";import{c as e,s as r,G as s}from"./index-CjgUKMd_.js";const c=r("footer")`
+import{C as o,F as t,a as n,b as a}from"./Contact-Bkh5xkZA.js";import{c as e,s as r,G as s}from"./index-Z-q4EUKF.js";const c=r("footer")`
     ${s};
     border-top: 1px solid var(--color8);
     width: 100%;

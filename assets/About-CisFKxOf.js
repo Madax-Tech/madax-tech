@@ -1,4 +1,4 @@
-import{c as e,s as r,G as h,t as s}from"./index-CjgUKMd_.js";const x="/madax-tech/assets/img1-DsDhHdnT.jpg",m="/madax-tech/assets/img2-C25j2Pkh.jpg";var g=s("<h3>Davi Lima"),u=s("<h3>Marcos Paulo");const f=r("section")`
+import{c as e,s as r,G as h,t as s}from"./index-Z-q4EUKF.js";const x="/madax-tech/assets/img1-DsDhHdnT.jpg",m="/madax-tech/assets/img2-C25j2Pkh.jpg";var g=s("<h3>Davi Lima"),u=s("<h3>Marcos Paulo");const f=r("section")`
     padding: 24px;
     max-width: 1100px;
     margin: 0 auto;
