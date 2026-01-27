@@ -1,7 +1,7 @@
 import type { Component, ParentProps } from 'solid-js';
 import { styled } from 'solid-styled-components';
 
-const Container = styled('a')`
+const Container = styled('p')`
     color: var(--color6);
     position: relative;
     text-decoration: none;
