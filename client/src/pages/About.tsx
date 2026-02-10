@@ -150,7 +150,7 @@ const AboutPage: Component<{ id: string }> = (props) => {
                         <SocialIcon href="https://github.com/Zelchi" target="_blank">
                             <BsGithub size={30} />
                         </SocialIcon>
-                        <SocialIcon href="https://linkedin.com/in/davi-lima" target="_blank">
+                        <SocialIcon href="https://linkedin.com/in/davi-lima-dev" target="_blank">
                             <BsLinkedin size={30} />
                         </SocialIcon>
                     </SocialLinks>
