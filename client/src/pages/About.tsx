@@ -180,7 +180,7 @@ const AboutPage: Component<{ id: string }> = (props) => {
                         <SocialIcon href="https://github.com/Marcosdev03" target="_blank">
                             <BsGithub size={30} />
                         </SocialIcon>
-                        <SocialIcon href="https://linkedin.com/in/marcos-paulo" target="_blank">
+                        <SocialIcon href="https://www.linkedin.com/in/marcos-freitas-dev" target="_blank">
                             <BsLinkedin size={30} />
                         </SocialIcon>
                     </SocialLinks>
