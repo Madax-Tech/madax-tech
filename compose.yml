@@ -6,6 +6,8 @@ services:
       dockerfile: dockerfile
     networks:
       - proxy_network
+    env_file:
+      - .env
     ports:
       - "${PORT}:${PORT}"
     restart: unless-stopped
